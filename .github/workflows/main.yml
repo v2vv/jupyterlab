@@ -10,5 +10,5 @@ jobs:
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: ispeakcode/docker-githubaction
-        username: ${{ honyua }}
-        password: ${{ 6d67c99f-a027-4660-9185-c89b0e0708a2 }}
+        honyua: ${{ secrets.DOCKER_USERNAME }}
+        6d67c99f-a027-4660-9185-c89b0e0708a2: ${{ secrets.DOCKER_PASSWORD }}
