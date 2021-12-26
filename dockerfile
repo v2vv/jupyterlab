@@ -8,5 +8,3 @@ RUN apt-get update --yes && \
     python3-pip \
     apt-get clean && rm -rf /var/lib/apt/lists/* &&\
     pip3 install jupyterlab 
-    
-CMD []
