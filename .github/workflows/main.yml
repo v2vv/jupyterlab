@@ -15,21 +15,30 @@ jobs:
   test:
     needs: build
     runs-on: ubuntu-latest
-    container: 
-      image: honyua/jupyterlab:laster
-      credentials:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-      ports:
-        - 8080:8888
-      volumes:
-        - /root/jupyter:/root
-        - /var/run/docker.sock:/var/run/docker.sock
-        - /usr/bin/docker:/usr/bin/docker
-      options: privileged
+    #container: 
+    #  image: honyua/jupyterlab:laster
+    #  credentials:
+    #    username: ${{ secrets.DOCKER_USERNAME }}
+    #    password: ${{ secrets.DOCKER_PASSWORD }}
+    #  ports:
+    #    - 8080:8888
+    #  volumes:
+    #    - /root/jupyter:/root
+    #    - /var/run/docker.sock:/var/run/docker.sock
+    #     - /usr/bin/docker:/usr/bin/docker
+    #  options: privileged
     steps:
-      - name: Publish to Registry
-        run: echo hello
+      - name: docker login
+        run: echo ${{ secrets.DOCKER_PASSWORD }} |docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      - name: docker_run_jupyter
+        run: docker run -d  \
+              --name jupyter \
+              --privileged \
+              -p 8888:8888 \
+              -v /root/jupyter:/root \
+              -v /var/run/docker.sock:/var/run/docker.sock \
+              -v /usr/bin/docker:/usr/bin/docker \
+              honyua/jupyterlab
       - name: sleeep 3
         run: sleeep 3
       - name: show log
