@@ -12,3 +12,17 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    container: 
+      image: honyua/jupyter:laster
+      ports:
+        - 8080:8888
+      volumes:
+        - /root/jupyter:/root
+        - /var/run/docker.sock:/var/run/docker.sock
+        - /usr/bin/docker:/usr/bin/docker
+      options: --privileged
+      
+    
