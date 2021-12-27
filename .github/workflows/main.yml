@@ -26,8 +26,11 @@ jobs:
         - /root/jupyter:/root
         - /var/run/docker.sock:/var/run/docker.sock
         - /usr/bin/docker:/usr/bin/docker
-      options: --privileged
+      options: "--privileged --name: jupyter"
     steps:
       - name: Publish to Registry
-        run: echo echo hello
-    
+        run: echo hello
+      - name: sleeep 3
+        run: sleeep 3
+      - name: show log
+        run: docker logs --since=\"2021-12-01\" --tail=30 jupyter
