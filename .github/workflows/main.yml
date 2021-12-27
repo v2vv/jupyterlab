@@ -42,4 +42,4 @@ jobs:
       - name: sleep 3
         run: sleep 3
       - name: show log
-        run: docker logs --since=\"2021-12-01\" --tail=30 jupyter
+        run: docker logs --since="2021-12-01" --tail=30 jupyter
