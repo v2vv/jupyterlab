@@ -39,7 +39,7 @@ jobs:
               -v /var/run/docker.sock:/var/run/docker.sock 
               -v /usr/bin/docker:/usr/bin/docker 
               honyua/jupyterlab:laster
-      - name: sleeep 3
-        run: sleeep 3
+      - name: sleep 3
+        run: sleep 3
       - name: show log
         run: docker logs --since=\"2021-12-01\" --tail=30 jupyter
