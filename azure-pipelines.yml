@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: docker build -t honyuajupyter:V2
+- script: docker build -t honyuajupyter:V2 .
   displayName: docker build
 - script: echo $pwd
   displayName: 'Run a one-line script'
