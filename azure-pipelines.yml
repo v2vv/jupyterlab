@@ -12,6 +12,8 @@ pool:
 steps:
 - script: docker build -t honyuajupyter:V2 .
   displayName: docker build
+- script: echo hello
+  displayName: docker build
 - script: echo $pwd
   displayName: 'Run a one-line script'
 - script: echo Hello, world!
